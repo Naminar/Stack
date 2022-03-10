@@ -1,5 +1,5 @@
 
-#include "../include/stack.h"
+#include "stack.h"
 
 int stack_init(Stack* stk, int capacity, void* stack_place)
 {
