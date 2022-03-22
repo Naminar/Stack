@@ -7,23 +7,9 @@
 #include <stdlib.h>
 #include <assert.h>
 
-//#define ELEMENT_FMT "%d"
-                             //OPEN BY HAND!!
-//typedef int DATA;
-
-struct Stack{
-    size_t first_canary;
-
-    DATA* data;
-    size_t size;
-    size_t capacity;
-
-    size_t hash;
-
-    size_t second_canary;
-};
-
-typedef struct Stack Stack;
+#define ELEMENT_FMT "%d"
+                                  //OPEN BY HAND!!
+typedef int DATA;
 
 //===============================================
 
@@ -40,14 +26,36 @@ const int ERR_RESIZE   = 0;
 
 //===============================================
 
-int stack_resize    (Stack* stk)                                    ;
-int stack_init      (Stack* stk, int capacity, void* stack_place)   ;
-void stack_dtor     (Stack* stk)                                    ;
-int stack_push      (Stack* stk, DATA  element)                     ;
-int stack_pop       (Stack* stk, DATA* element)                     ;
-void stack_dump     (Stack* stk, int, int, const char*, const char*);
-int is_stack_spoiled(Stack* stk)                                    ;
-void DragonHash     (Stack* stk)                                    ;
-//===============================================
+class cStack{
+
+    private:
+
+    size_t first_canary;
+
+    DATA* data;
+    size_t size;
+    size_t capacity;
+
+    size_t hash;
+
+    size_t second_canary;
+
+    //========functions======
+
+    public:
+
+     cStack(int capacity, void* stack_place = NULL)          ;
+    ~cStack()                                                ;
+
+    int  stack_resize    ()                                  ;
+    int  is_stack_spoiled()                                  ;
+    int  stack_push      (DATA  element)                     ;
+    int  stack_pop       (DATA* element)                     ;
+
+    private:
+
+    void stack_dump      (int, int, const char*, const char*);
+    void DragonHash      ()                                  ;
+};
 
 #endif
