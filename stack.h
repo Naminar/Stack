@@ -44,8 +44,8 @@ class cStack{
 
     public:
 
-     cStack(int capacity, void* stack_place = NULL)          ;
-    ~cStack()                                                ;
+    explicit cStack(int capacity, void* stack_place = NULL)  ;
+            ~cStack()                                        ;
 
     int  stack_resize    ()                                  ;
     int  is_stack_spoiled()                                  ;
